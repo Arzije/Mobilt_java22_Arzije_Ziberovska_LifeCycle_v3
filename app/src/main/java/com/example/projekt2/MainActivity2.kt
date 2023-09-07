@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -25,12 +26,20 @@ class MainActivity2 : AppCompatActivity() {
 
     private var userId: String? = null
 
+    private var isLoggedIn = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        val sharedPreferences = getSharedPreferences("AppData", Context.MODE_PRIVATE)
+        isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+
+        if(isLoggedIn) {
+            val toolbar: Toolbar = findViewById(R.id.toolbar)
+            toolbar.visibility = View.VISIBLE
+            setSupportActionBar(toolbar)
+        }
 
         ageEditText = findViewById(R.id.ageEditText)
         drivingLicenseCheckBox = findViewById(R.id.drivingLicenseCheckBox)
@@ -39,13 +48,12 @@ class MainActivity2 : AppCompatActivity() {
 
         val submitButton: Button = findViewById(R.id.submitButton)
 
-        userId = intent.getStringExtra("userId") // Hämta användarens dokument-ID från föregående aktivitet
+        userId = intent.getStringExtra("userId")
 
         submitButton.setOnClickListener {
             val age = ageEditText.text.toString()
             val hasDrivingLicense = drivingLicenseCheckBox.isChecked
 
-            // Hämta valt kön från RadioButton
             val selectedGenderId = genderRadioGroup.checkedRadioButtonId
             val selectedGender: String = when (selectedGenderId) {
                 R.id.maleRadioButton -> "Manlig"
@@ -56,7 +64,6 @@ class MainActivity2 : AppCompatActivity() {
 
             val email = emailEditText.text.toString()
 
-            // Spara datan till användarens dokument i Firestore
             saveUserDataToFirestore(userId, age, hasDrivingLicense, selectedGender, email)
 
             val sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE)
@@ -66,11 +73,6 @@ class MainActivity2 : AppCompatActivity() {
             editor.putString("gender", selectedGender)
             editor.putString("email", email)
             editor.apply()
-
-
-            // Exempel på navigering tillbaka till MainActivity:
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
         }
     }
 
@@ -111,7 +113,6 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        Log.d("Navigation", "onCreateOptionsMenu called")
         menuInflater.inflate(R.menu.navigation_menu, menu)
         return true
     }
@@ -119,14 +120,15 @@ class MainActivity2 : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_home -> {
-                Log.d("Navigation", "Home menu item clicked")
-
-                // Navigera tillbaka till MainActivity eller annan aktivitet/fragment
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, MainActivity4::class.java)
                 startActivity(intent)
                 return true
             }
-            // Lägg till fler menyelement här om du behöver navigera till andra aktiviteter
+            R.id.menu_register ->{
+                val intent = Intent(this, MainActivity3::class.java)
+                startActivity(intent)
+                return true
+            }
             else -> {
                 Log.d("Navigation", "Unknown menu item clicked: ${item.itemId}")
                 return super.onOptionsItemSelected(item)
@@ -143,11 +145,8 @@ class MainActivity2 : AppCompatActivity() {
         val gender = sharedPreferences.getString("gender", "")
         val email = sharedPreferences.getString("email", "")
 
-        // Uppdatera dina UI-komponenter med de sparade värdena
         ageEditText.setText(age)
         drivingLicenseCheckBox.isChecked = hasDrivingLicense
-
-        // ... (Uppdatera övriga UI-komponenter här)
 
         when (gender) {
             "Manlig" -> genderRadioGroup.check(R.id.maleRadioButton)

@@ -6,16 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
-    <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/navigation_menu" /> <!-- Länka till ditt meny-xml -->
+        app:menu="@menu/navigation_menu" />
 
-    <!-- Linjär Layout för dina input-element -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
