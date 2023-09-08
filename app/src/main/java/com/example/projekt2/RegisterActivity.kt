@@ -14,7 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.firestore.FirebaseFirestore
 
-class MainActivity3 : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
     private val db = FirebaseFirestore.getInstance()
@@ -86,12 +86,12 @@ class MainActivity3 : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_home -> {
-                val intent = Intent(this, MainActivity4::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
                 return true
             }
             R.id.menu_form ->{
-                val intent = Intent(this, MainActivity2::class.java)
+                val intent = Intent(this, FormActivity::class.java)
                 startActivity(intent)
                 return true
             }

@@ -10,7 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 
-class MainActivity4 : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     private var isLoggedIn = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,12 +37,12 @@ class MainActivity4 : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_form -> {
-                val intent = Intent(this, MainActivity2::class.java)
+                val intent = Intent(this, FormActivity::class.java)
                 startActivity(intent)
                 return true
             }
             R.id.menu_register ->{
-                val intent = Intent(this, MainActivity3::class.java)
+                val intent = Intent(this, RegisterActivity::class.java)
                 startActivity(intent)
                 return true
             }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
+    android:background="#2E2E2E"
+    tools:context=".FormActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -29,13 +30,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ålder"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColorHint="#B0B0B0" />
 
         <CheckBox
             android:id="@+id/drivingLicenseCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Har körkort" />
+            android:text="Har körkort"
+            android:textColorHint="#B0B0B0" />
 
         <RadioGroup
             android:id="@+id/genderRadioGroup"
@@ -53,13 +56,15 @@
                 android:id="@+id/femaleRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kvinnlig" />
+                android:text="Kvinnlig"
+                android:textColorHint="#B0B0B0" />
 
             <RadioButton
                 android:id="@+id/otherRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Annat" />
+                android:text="Annat"
+                android:textColorHint="#B0B0B0" />
 
         </RadioGroup>
 
@@ -68,13 +73,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="E-postadress"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColorHint="#B0B0B0" />
 
         <Button
             android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit" />
+            android:text="Submit"
+            android:backgroundTint="#B0B0B0"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

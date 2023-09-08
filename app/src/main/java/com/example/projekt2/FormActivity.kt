@@ -14,10 +14,9 @@ import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class MainActivity2 : AppCompatActivity() {
+class FormActivity : AppCompatActivity() {
     private lateinit var ageEditText: EditText
     private lateinit var drivingLicenseCheckBox: CheckBox
     private lateinit var genderRadioGroup: RadioGroup
@@ -120,12 +119,12 @@ class MainActivity2 : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_home -> {
-                val intent = Intent(this, MainActivity4::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
                 return true
             }
             R.id.menu_register ->{
-                val intent = Intent(this, MainActivity3::class.java)
+                val intent = Intent(this, RegisterActivity::class.java)
                 startActivity(intent)
                 return true
             }

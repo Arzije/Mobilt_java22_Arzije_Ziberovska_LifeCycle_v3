@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#2E2E2E"
+    tools:context=".LoginActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -22,6 +23,7 @@
         android:hint="Användarnamn"
         android:inputType="text"
         android:padding="8dp"
+        android:textColorHint="#B0B0B0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -34,6 +36,7 @@
         android:hint="Lösenord"
         android:inputType="textPassword"
         android:padding="8dp"
+        android:textColorHint="#B0B0B0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
@@ -43,6 +46,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Logga in"
+        android:backgroundTint="#B0B0B0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
@@ -52,6 +56,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Registrera"
+        android:backgroundTint="#B0B0B0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
